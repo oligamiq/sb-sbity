@@ -295,7 +295,7 @@ pub enum BlockInputValue {
         /// Name of the variable
         name: Name,
         /// Id of the variable
-        id: Uid,
+        id: Option<Uid>,
     },
 
     /// List input
@@ -638,7 +638,11 @@ impl Serialize for BlockInputValue {
                 s.serialize_element(name)?;
                 s.serialize_element(id)?;
             }
-            Variable { name, id } | List { name, id } => {
+            Variable { name, id } => {
+                s.serialize_element(name)?;
+                s.serialize_element(id)?;
+            },
+            List { name, id } => {
                 s.serialize_element(name)?;
                 s.serialize_element(id)?;
             }
