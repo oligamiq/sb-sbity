@@ -295,7 +295,7 @@ pub enum BlockInputValue {
         /// Name of the variable
         name: Name,
         /// Id of the variable
-        id: Option<Uid>,
+        id: Uid,
     },
 
     /// List input
