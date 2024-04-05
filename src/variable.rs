@@ -10,7 +10,7 @@ pub struct Variable {
     pub name: Text,
 
     /// Value of the variable.
-    pub value: Value,
+    pub value: ValueWithBool,
 
     /// Cloud variable. Variable that is stored in the server.
     /// Can only store numbers.
