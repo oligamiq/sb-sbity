@@ -57,7 +57,7 @@ pub struct BlockVarListReporterTop {
     /// Name of the variable
     pub name: Name,
     /// Id of the variable
-    pub id: Option<Uid>,
+    pub id: Uid,
     /// Position X of the reporter
     pub x: Number,
     /// Position y of the reporter
