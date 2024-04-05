@@ -167,7 +167,7 @@ pub enum BlockMutationEnum {
             deserialize_with = "deserialize_json_str",
             serialize_with = "serialize_json_str"
         )]
-        argumentdefaults: Vec<Value>,
+        argumentdefaults: Vec<ValueWithBool>,
 
         /// Whether to run the block without screen refresh or not.
         #[serde(
@@ -553,12 +553,6 @@ impl<'de> Visitor<'de> for BlockInputValueVisitor {
                             &"a string",
                         ))
                     }
-                    Value::Bool(_) => {
-                        return Err(A::Error::invalid_value(
-                            serde::de::Unexpected::Other("bool"),
-                            &"a string",
-                        ))
-                    }
                 };
 
                 Broadcast { name, id }
@@ -577,12 +571,6 @@ impl<'de> Visitor<'de> for BlockInputValueVisitor {
                             serde::de::Unexpected::Other("number"),
                             &"a string",
                         ))
-                    },
-                    Value::Bool(_) => {
-                        return Err(A::Error::invalid_value(
-                            serde::de::Unexpected::Other("bool"),
-                            &"a string",
-                        ))
                     }
                 };
                 Variable { name, id }
@@ -599,12 +587,6 @@ impl<'de> Visitor<'de> for BlockInputValueVisitor {
                     Value::Number(_) => {
                         return Err(A::Error::invalid_value(
                             serde::de::Unexpected::Other("number"),
-                            &"a string",
-                        ))
-                    },
-                    Value::Bool(_) => {
-                        return Err(A::Error::invalid_value(
-                            serde::de::Unexpected::Other("bool"),
                             &"a string",
                         ))
                     }

@@ -16,5 +16,3 @@ mod script_data;
 mod target;
 #[cfg(test)]
 mod value;
-#[cfg(test)]
-mod boolean_on_list;
