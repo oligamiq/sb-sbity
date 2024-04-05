@@ -10,5 +10,5 @@ pub struct List {
     pub name: Text,
 
     /// Vec of the variable
-    pub values: Vec<Value>,
+    pub values: Vec<ValueWithBool>,
 }
