@@ -21,13 +21,6 @@ pub enum Number {
 pub enum Value {
     Number(Number),
     Text(Text),
-}
-
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum ValueWithBool {
-    Number(Number),
-    Text(Text),
     Bool(bool),
 }
 
@@ -67,15 +60,6 @@ impl From<Float> for Value {
     }
 }
 
-impl From<Value> for ValueWithBool {
-    fn from(v: Value) -> Self {
-        match v {
-            Value::Number(n) => ValueWithBool::Number(n),
-            Value::Text(t) => ValueWithBool::Text(t),
-        }
-    }
-}
-
 impl Default for Number {
     fn default() -> Self {
         Number::Int(0)
@@ -85,11 +69,5 @@ impl Default for Number {
 impl Default for Value {
     fn default() -> Self {
         Value::Number(Default::default())
-    }
-}
-
-impl Default for ValueWithBool {
-    fn default() -> Self {
-        ValueWithBool::Number(Default::default())
     }
 }
